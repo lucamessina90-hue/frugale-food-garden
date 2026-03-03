@@ -16,7 +16,7 @@ export default function HomePage() {
           <Image src="/logo-white-teal.png" alt="Frugale Food Garden" width={140} height={40} style={{ objectFit: "contain", height: 40, width: "auto" }} />
         </Link>
         <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
-          <Link href="/eventi" style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" }}>Servizi</Link>
+          <Link href="/eventi" style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" }}>Servizi</Link><Link href="/giardino" style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" }}>Sopralluogo</Link><Link href="/staff" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.75rem" }}>Staff</Link>
           <Link href="/eventi" style={{ padding: "9px 20px", borderRadius: 4, background: "white", color: "var(--teal-darker)", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.03em" }}>Prenota appuntamento</Link>
         </div>
       </nav>
