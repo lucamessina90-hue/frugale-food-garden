@@ -12,7 +12,7 @@ const STATUS_LABELS: Record<string,string> = { pending:"In Attesa", confirmed:"C
 const EVENT_TYPE_LABELS: Record<string,string> = { compleanno:"Compleanno", festa_privata:"Festa Privata", aziendale:"Aziendale", altro:"Altro" };
 const SPACE_TYPE_LABELS: Record<string,string> = { giardino_privato:"Giardino Privato", terrazzo:"Terrazzo", balcone:"Balcone", spazio_commerciale:"Spazio Commerciale" };
 const DAYS_OF_WEEK = [{id:1,label:"Lunedì"},{id:2,label:"Martedì"},{id:3,label:"Mercoledì"},{id:4,label:"Giovedì"},{id:5,label:"Venerdì"},{id:6,label:"Sabato"},{id:0,label:"Domenica"}];
-const N8N_URL = "https://frugalefoodgarden.app.n8n.cloud/webhook-test/3971d34d-51ba-4364-a9d9-78ad3b35d88d";
+const N8N_URL = "https://frugalefoodgarden.app.n8n.cloud/webhook/3971d34d-51ba-4364-a9d9-78ad3b35d88d";
 
 function StatusBadge({ status }: { status: string }) {
   return <span className={`status-badge status-${status}`}>{STATUS_LABELS[status] ?? status}</span>;
