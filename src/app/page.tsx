@@ -25,7 +25,7 @@ export default function HomePage() {
         </div>
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 700, lineHeight: 1.15, marginBottom: "1.25rem", color: "var(--fg)" }}>
           Il tuo spazio verde<br />
-          <span style={{ color: "var(--primary)" }}>a Milano</span>
+          <span style={{ color: "var(--primary)" }}>a Roma</span>
         </h1>
         <p style={{ fontSize: "1.1rem", color: "var(--muted-fg)", maxWidth: 560, margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
           Organizziamo eventi indimenticabili immersi nella natura e offriamo sopralluoghi professionali per trasformare il tuo giardino o terrazzo.
@@ -86,7 +86,7 @@ export default function HomePage() {
           <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>📍</div>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "2rem", fontWeight: 700, marginBottom: "0.75rem" }}>Dove siamo</h2>
           <p style={{ opacity: 0.85, marginBottom: "1.5rem", lineHeight: 1.7 }}>
-            Siamo a Milano e dintorni.<br />
+            Siamo a Roma e dintorni.<br />
             Raggiungiamo tutta la città e la prima cintura.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
@@ -98,7 +98,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer style={{ borderTop: "1px solid var(--border)", padding: "2rem 1.5rem", textAlign: "center", color: "var(--muted-fg)", fontSize: "0.82rem" }}>
-        <p>© {new Date().getFullYear()} Frugale Food Garden · Milano</p>
+        <p>© {new Date().getFullYear()} Frugale Food Garden · Roma</p>
         <p style={{ marginTop: "4px" }}>
           <Link href="/staff" style={{ color: "var(--muted-fg)" }}>Area Staff</Link>
         </p>
