@@ -1,5 +1,5 @@
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
-  experimental: { serverComponentsExternalPackages: ["pg"] },
+  serverExternalPackages: ["pg"],
 };
 module.exports = nextConfig;
