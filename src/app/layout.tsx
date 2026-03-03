@@ -3,17 +3,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Frugale Food Garden",
-  description: "Prenota il tuo evento o sopralluogo giardinaggio",
+  description: "Dove il cibo incontra la natura — eventi e sopralluoghi a Roma",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="it">
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body>{children}</body>
     </html>

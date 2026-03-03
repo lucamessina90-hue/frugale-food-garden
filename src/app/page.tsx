@@ -1,108 +1,174 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
-    <div className="organic-bg" style={{ minHeight: "100vh" }}>
-      {/* Nav */}
-      <nav style={{ position: "sticky", top: 0, zIndex: 40, background: "rgba(249,247,242,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid var(--border)", padding: "0 1.5rem", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-          </div>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", fontWeight: 700 }}>Frugale Food Garden</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <Link href="/eventi" className="btn-outline" style={{ fontSize: "0.82rem", padding: "7px 14px" }}>Prenota evento</Link>
-          <Link href="/giardino" className="btn-outline" style={{ fontSize: "0.82rem", padding: "7px 14px" }}>Sopralluogo</Link>
-          <Link href="/staff" style={{ fontSize: "0.78rem", color: "var(--muted-fg)" }}>Staff</Link>
+    <div style={{ minHeight: "100vh", background: "var(--cream)" }}>
+
+      {/* NAV */}
+      <nav style={{
+        position: "sticky", top: 0, zIndex: 100,
+        background: "var(--teal-darker)", height: 68,
+        padding: "0 2rem", display: "flex", alignItems: "center", justifyContent: "space-between",
+        boxShadow: "0 2px 20px rgba(0,0,0,0.2)",
+      }}>
+        <Link href="/">
+          <Image src="/logo-white-teal.png" alt="Frugale Food Garden" width={140} height={40} style={{ objectFit: "contain", height: 40, width: "auto" }} />
+        </Link>
+        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          <Link href="/eventi" style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" }}>Servizi</Link>
+          <Link href="/eventi" style={{ padding: "9px 20px", borderRadius: 4, background: "white", color: "var(--teal-darker)", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.03em" }}>Prenota appuntamento</Link>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section style={{ maxWidth: 900, margin: "0 auto", padding: "6rem 1.5rem 4rem", textAlign: "center" }} className="fade-in">
-        <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "6px 16px", borderRadius: "999px", background: "var(--accent)", color: "var(--accent-fg)", fontSize: "0.82rem", fontWeight: 600, marginBottom: "1.5rem" }}>
-          🌿 Natura, sapori e cura del verde
-        </div>
-        <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 700, lineHeight: 1.15, marginBottom: "1.25rem", color: "var(--fg)" }}>
-          Il tuo spazio verde<br />
-          <span style={{ color: "var(--primary)" }}>a Roma</span>
-        </h1>
-        <p style={{ fontSize: "1.1rem", color: "var(--muted-fg)", maxWidth: 560, margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-          Organizziamo eventi indimenticabili immersi nella natura e offriamo sopralluoghi professionali per trasformare il tuo giardino o terrazzo.
-        </p>
-        <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-          <Link href="/eventi" className="btn-primary" style={{ fontSize: "1rem", padding: "14px 28px" }}>
-            🍽 Prenota un evento
-          </Link>
-          <Link href="/giardino" className="btn-primary" style={{ fontSize: "1rem", padding: "14px 28px", background: "var(--secondary-fg)" }}>
-            🌿 Prenota sopralluogo
-          </Link>
+      {/* HERO */}
+      <section style={{ minHeight: "88vh", background: "var(--teal-darker)", position: "relative", overflow: "hidden", display: "flex", alignItems: "center" }}>
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 70% 30%,rgba(74,138,140,0.5) 0%,transparent 60%),radial-gradient(ellipse at 20% 70%,rgba(30,69,71,0.9) 0%,transparent 50%)" }} />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem", display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: "4rem", alignItems: "center", width: "100%" }}>
+          <div>
+            <div className="fu" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: "1.5rem", padding: "6px 16px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.08)", fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.85)" }}>
+              🌿 Roma · Via Adolfo Marco Boroli 23
+            </div>
+            <h1 className="fu d1" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3rem,6vw,5.5rem)", fontWeight: 600, lineHeight: 1.05, color: "white", letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
+              Il giardino<br />dove <em style={{ fontStyle: "italic", color: "rgba(255,255,255,0.55)" }}>il cibo</em><br />incontra <em style={{ fontStyle: "italic", color: "rgba(255,255,255,0.55)" }}>la natura</em>
+            </h1>
+            <p className="fu d2" style={{ fontSize: "1rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, marginBottom: "2.5rem", fontWeight: 300, maxWidth: 480 }}>
+              Prenota un appuntamento con il nostro Event Manager per organizzare il tuo evento, o richiedi un sopralluogo gratuito per il tuo spazio verde a Roma.
+            </p>
+            <div className="fu d3" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <Link href="/eventi" style={{ padding: "13px 26px", borderRadius: 4, background: "white", color: "var(--teal-darker)", fontWeight: 700, fontSize: "0.875rem", display: "inline-flex", alignItems: "center", gap: 8 }}>
+                🍽 Parla con un Event Manager
+              </Link>
+              <Link href="/giardino" style={{ padding: "13px 26px", borderRadius: 4, border: "2px solid rgba(255,255,255,0.4)", color: "white", fontWeight: 600, fontSize: "0.875rem", display: "inline-flex", alignItems: "center", gap: 8 }}>
+                🌿 Sopralluogo gratuito
+              </Link>
+            </div>
+          </div>
+          <div className="fu d2" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            {[
+              { label: "Prossima disponibilità", val: "Questa settimana", sub: "Slot mattina e pomeriggio" },
+              { label: "Primo sopralluogo", val: "Gratuito ✓", valColor: "#7dd3a8", sub: "Senza impegno" },
+            ].map(c => (
+              <div key={c.label} style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 12, padding: "1.1rem 1.4rem", color: "white" }}>
+                <p style={{ fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", opacity: 0.55, marginBottom: 4 }}>{c.label}</p>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: "1.35rem", fontWeight: 600, color: c.valColor }}>{c.val}</p>
+                <p style={{ fontSize: "0.75rem", opacity: 0.6, marginTop: 3 }}>{c.sub}</p>
+              </div>
+            ))}
+            <div style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 12, padding: "1.1rem 1.4rem", color: "white" }}>
+              <p style={{ fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", opacity: 0.55, marginBottom: 10 }}>I nostri servizi</p>
+              <div style={{ display: "flex", gap: 8 }}>
+                {[["🍽", "Catering & Eventi"], ["🌿", "Giardini & Verde"]].map(([ic, lb]) => (
+                  <div key={lb} style={{ flex: 1, background: "rgba(255,255,255,0.1)", borderRadius: 8, padding: "10px", textAlign: "center" }}>
+                    <div style={{ fontSize: "1.4rem" }}>{ic}</div>
+                    <div style={{ fontSize: "0.68rem", opacity: 0.75, marginTop: 4 }}>{lb}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "2rem 1.5rem 5rem" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
+      {/* TEXTURE STRIP */}
+      <div style={{ height: 100, overflow: "hidden", position: "relative" }}>
+        <img src="/texture.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.3 }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right,var(--cream) 0%,transparent 12%,transparent 88%,var(--cream) 100%)" }} />
+      </div>
+
+      {/* SERVICES */}
+      <section style={{ padding: "5rem 2rem", maxWidth: 1100, margin: "0 auto" }}>
+        <p style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--teal)", marginBottom: "1rem" }}>· I nostri servizi ·</p>
+        <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,3.2rem)", fontWeight: 600, lineHeight: 1.15, marginBottom: "3rem" }}>Cosa facciamo<br />per te</h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: "1.5rem" }}>
           {[
-            { icon: "🍽", tag: "Cucina & Natura", title: "Eventi & Catering", desc: "Compleanni, feste private, eventi aziendali. Cucina biologica stagionale immersa nel verde, con allestimenti personalizzati.", href: "/eventi", cta: "Prenota un evento" },
-            { icon: "🌿", tag: "Giardinaggio Professionale", title: "Sopralluogo Gratuito", desc: "Progettiamo e curiamo giardini, terrazzi, balconi e spazi commerciali. Primo sopralluogo senza impegno.", href: "/giardino", cta: "Prenota sopralluogo" },
+            { icon: "🍽", bg: "var(--teal-darker)", tag: "Cucina & Natura", title: "Eventi & Catering", desc: "Compleanni, feste private, eventi aziendali. Parlaci del tuo evento: un appuntamento con il nostro Event Manager per definire ogni dettaglio.", cta: "Parla con un Event Manager →", href: "/eventi", btnBg: "var(--teal-darker)" },
+            { icon: "🌳", bg: "#f2e8dc", tag: "Giardinaggio professionale", title: "Sopralluogo gratuito", desc: "Progettiamo e curiamo giardini, terrazzi, balconi e spazi commerciali a Roma. Il primo sopralluogo è completamente gratuito e senza impegno.", cta: "Prenota sopralluogo →", href: "/giardino", btnBg: "var(--brown)" },
           ].map(s => (
-            <div key={s.title} className="card" style={{ display: "flex", flexDirection: "column", transition: "box-shadow 0.2s, transform 0.2s" }}>
-              <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>{s.icon}</div>
-              <div style={{ display: "inline-block", padding: "3px 10px", borderRadius: "999px", fontSize: "0.72rem", fontWeight: 700, background: "var(--accent)", color: "var(--accent-fg)", marginBottom: "0.75rem", width: "fit-content" }}>{s.tag}</div>
-              <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem", fontWeight: 700, marginBottom: "0.75rem" }}>{s.title}</h3>
-              <p style={{ color: "var(--muted-fg)", fontSize: "0.9rem", lineHeight: 1.7, flex: 1, marginBottom: "1.5rem" }}>{s.desc}</p>
-              <Link href={s.href} className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>{s.cta} →</Link>
+            <div key={s.title} style={{ borderRadius: 14, overflow: "hidden", border: "1px solid var(--border)", background: "white" }}>
+              <div style={{ height: 180, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "4.5rem", background: s.bg }}>{s.icon}</div>
+              <div style={{ padding: "1.5rem" }}>
+                <span style={{ display: "inline-block", padding: "3px 12px", borderRadius: 999, fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", background: "var(--teal-light)", color: "var(--teal-darker)", marginBottom: "0.75rem" }}>{s.tag}</span>
+                <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.7rem", fontWeight: 600, marginBottom: "0.6rem" }}>{s.title}</h3>
+                <p style={{ color: "var(--text-muted)", lineHeight: 1.7, fontSize: "0.875rem", marginBottom: "1.25rem" }}>{s.desc}</p>
+                <Link href={s.href} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "11px 20px", borderRadius: 4, background: s.btnBg, color: "white", fontWeight: 600, fontSize: "0.85rem" }}>{s.cta}</Link>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* How it works */}
-      <section style={{ background: "var(--card)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "4rem 1.5rem" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 700, marginBottom: "0.75rem" }}>Come funziona</h2>
-          <p style={{ color: "var(--muted-fg)", marginBottom: "3rem" }}>Tre semplici passi per il tuo evento o sopralluogo</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2rem" }}>
+      {/* HOW IT WORKS */}
+      <section style={{ background: "var(--teal-darker)", padding: "5rem 2rem", color: "white" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <p style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: "1rem" }}>· Come funziona ·</p>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,3.2rem)", fontWeight: 600, lineHeight: 1.15, marginBottom: "3rem" }}>Tre passi verso<br />il tuo evento</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: "2rem" }}>
             {[
-              { n: "1", icon: "📅", title: "Scegli data e orario", desc: "Seleziona il tipo di servizio, la data preferita e la fascia oraria disponibile." },
-              { n: "2", icon: "📝", title: "Inserisci i tuoi dati", desc: "Pochi campi: nome, email, telefono e dettagli sulla tua richiesta." },
-              { n: "3", icon: "✅", title: "Ricevi la conferma", desc: "Ti contatteremo entro 24 ore per confermare e personalizzare i dettagli." },
+              { n: "1", title: "Scegli data e orario", desc: "Seleziona tipo di servizio, data e fascia oraria nel nostro calendario online." },
+              { n: "2", title: "Inserisci i tuoi dati", desc: "Pochi campi: nome, email, telefono e dettagli sulla tua richiesta. In meno di 2 minuti." },
+              { n: "3", title: "Ricevi la conferma", desc: "Ti contatteremo entro 24 ore per confermare e personalizzare ogni dettaglio." },
             ].map(s => (
-              <div key={s.n} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
-                <div style={{ width: 56, height: 56, borderRadius: "50%", background: "var(--primary)", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontSize: "1.5rem", fontWeight: 700 }}>{s.n}</div>
-                <div style={{ fontSize: "2rem" }}>{s.icon}</div>
-                <h4 style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", fontWeight: 700 }}>{s.title}</h4>
-                <p style={{ color: "var(--muted-fg)", fontSize: "0.875rem", lineHeight: 1.6 }}>{s.desc}</p>
+              <div key={s.n} style={{ textAlign: "center" }}>
+                <div style={{ width: 52, height: 52, borderRadius: "50%", border: "2px solid rgba(255,255,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem", fontFamily: "var(--font-display)", fontSize: "1.4rem", fontWeight: 600 }}>{s.n}</div>
+                <h4 style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 600, marginBottom: "0.5rem" }}>{s.title}</h4>
+                <p style={{ fontSize: "0.85rem", opacity: 0.65, lineHeight: 1.7 }}>{s.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Location */}
-      <section style={{ maxWidth: 900, margin: "0 auto", padding: "4rem 1.5rem", textAlign: "center" }}>
-        <div style={{ background: "var(--primary)", borderRadius: "1.5rem", padding: "3rem 2rem", color: "var(--primary-fg)" }}>
-          <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>📍</div>
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "2rem", fontWeight: 700, marginBottom: "0.75rem" }}>Dove siamo</h2>
-          <p style={{ opacity: 0.85, marginBottom: "1.5rem", lineHeight: 1.7 }}>
-            Siamo a Roma e dintorni.<br />
-            Raggiungiamo tutta la città e la prima cintura.
-          </p>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/eventi" style={{ padding: "12px 24px", borderRadius: "0.75rem", background: "white", color: "var(--primary)", fontWeight: 700, fontSize: "0.9rem" }}>Prenota evento</Link>
-            <Link href="/giardino" style={{ padding: "12px 24px", borderRadius: "0.75rem", border: "2px solid rgba(255,255,255,0.5)", color: "white", fontWeight: 700, fontSize: "0.9rem" }}>Prenota sopralluogo</Link>
+      {/* LOCATION */}
+      <section style={{ padding: "5rem 2rem", maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{ background: "var(--teal-darker)", borderRadius: 18, padding: "3.5rem", color: "white", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "3rem", alignItems: "center", position: "relative", overflow: "hidden" }}>
+          <div>
+            <p style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", opacity: 0.5, marginBottom: "0.75rem" }}>· Dove siamo ·</p>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", fontWeight: 600, lineHeight: 1.1, marginBottom: "1rem" }}>Siamo<br />a Roma</h2>
+            <p style={{ opacity: 0.7, lineHeight: 1.8, marginBottom: "2rem", fontSize: "0.9rem" }}>Raggiungiamo tutta la città e la prima cintura. Il nostro spazio è facilmente accessibile nel cuore di Roma.</p>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <Link href="/eventi" style={{ padding: "11px 22px", borderRadius: 4, background: "white", color: "var(--teal-darker)", fontWeight: 700, fontSize: "0.85rem" }}>Event Manager</Link>
+              <Link href="/giardino" style={{ padding: "11px 22px", borderRadius: 4, border: "2px solid rgba(255,255,255,0.4)", color: "white", fontWeight: 600, fontSize: "0.85rem" }}>Sopralluogo gratuito</Link>
+            </div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            {[
+              { ic: "📍", label: "Indirizzo", val: "Via Adolfo Marco Boroli 23, Roma" },
+              { ic: "📧", label: "Email", val: "frugaleroma@gmail.com" },
+              { ic: "🕐", label: "Orari", val: "Lun–Ven 9:00–19:00 · Sab 9:00–13:00" },
+            ].map(item => (
+              <div key={item.label} style={{ display: "flex", alignItems: "flex-start", gap: 12, background: "rgba(255,255,255,0.07)", borderRadius: 10, padding: "12px 14px" }}>
+                <span style={{ fontSize: "1.1rem", flexShrink: 0, marginTop: 1 }}>{item.ic}</span>
+                <div>
+                  <p style={{ fontWeight: 600, fontSize: "0.82rem", marginBottom: 1 }}>{item.label}</p>
+                  <p style={{ fontSize: "0.75rem", opacity: 0.6 }}>{item.val}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ borderTop: "1px solid var(--border)", padding: "2rem 1.5rem", textAlign: "center", color: "var(--muted-fg)", fontSize: "0.82rem" }}>
-        <p>© {new Date().getFullYear()} Frugale Food Garden · Roma</p>
-        <p style={{ marginTop: "4px" }}>
-          <Link href="/staff" style={{ color: "var(--muted-fg)" }}>Area Staff</Link>
-        </p>
+      {/* FOOTER */}
+      <footer style={{ background: "#163335", color: "rgba(255,255,255,0.6)", padding: "3rem 2rem 2rem" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "2rem", flexWrap: "wrap", gap: "2rem" }}>
+            <div>
+              <Image src="/logo-white-teal.png" alt="Frugale" width={120} height={34} style={{ objectFit: "contain", height: 34, width: "auto", opacity: 0.8 }} />
+              <p style={{ fontSize: "0.75rem", marginTop: 8, opacity: 0.45 }}>Via Adolfo Marco Boroli 23, Roma</p>
+            </div>
+            <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", alignItems: "center" }}>
+              <Link href="/eventi" style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.8rem" }}>Prenota appuntamento</Link>
+              <Link href="/giardino" style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.8rem" }}>Sopralluogo</Link>
+              <Link href="/staff" style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.8rem" }}>Area Staff</Link>
+            </div>
+          </div>
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "1.5rem", fontSize: "0.72rem", opacity: 0.35 }}>
+            © {new Date().getFullYear()} Frugale Food Garden · Roma
+          </div>
+        </div>
       </footer>
+
     </div>
   );
 }
