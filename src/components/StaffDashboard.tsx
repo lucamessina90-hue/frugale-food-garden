@@ -25,7 +25,7 @@ function BookingModal({ booking, type, onClose, onSave }: { booking:any; type:st
   const startDate = new Date(Number(booking.start_time));
 
   return (
-    <div style={{ position:"fixed", inset:0, zIndex:200, display:"flex", alignItems:"center", justifyContent:"center", padding:"1rem" }}>
+    <div style={{ position:"fixed", inset:0, zIndex:9999, display:"flex", alignItems:"center", justifyContent:"center", padding:"1rem" }}>
       <div onClick={onClose} style={{ position:"absolute", inset:0, background:"rgba(0,0,0,0.5)" }} />
       <div className="fade-in card" style={{ position:"relative", width:"100%", maxWidth:540, maxHeight:"90vh", overflowY:"auto" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:"1.25rem" }}>
