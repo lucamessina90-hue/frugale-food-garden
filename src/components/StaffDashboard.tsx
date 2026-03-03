@@ -25,9 +25,9 @@ function BookingModal({ booking, type, onClose, onSave }: { booking:any; type:st
   const startDate = new Date(Number(booking.start_time));
 
   return (
-    <div style={{ position:"fixed", inset:0, zIndex:9999, display:"flex", alignItems:"center", justifyContent:"center", padding:"1rem" }}>
+    <div style={{ position:"fixed", inset:0, zIndex:9999, display:"flex", alignItems:"flex-start", justifyContent:"center", padding:"1rem", paddingTop:"5vh" }}>
       <div onClick={onClose} style={{ position:"absolute", inset:0, background:"rgba(0,0,0,0.5)" }} />
-      <div className="fade-in card" style={{ position:"relative", width:"100%", maxWidth:540, maxHeight:"90vh", overflowY:"auto" }}>
+      <div className="fade-in card" style={{ position:"relative", width:"100%", maxWidth:540, maxHeight:"85vh", overflowY:"auto", marginTop:"auto", marginBottom:"auto" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:"1.25rem" }}>
           <div>
             <h2 style={{ fontFamily:"var(--font-display)", fontSize:"1.4rem", fontWeight:700 }}>{booking.client_name}</h2>
@@ -146,7 +146,7 @@ export default function StaffDashboard() {
 
   // ── LOGIN ──
   if (!loggedIn) return (
-    <div style={{ minHeight:"100vh", background:"var(--bg)", display:"flex", alignItems:"center", justifyContent:"center", padding:"1rem" }}>
+    <div style={{ minHeight:"100vh", background:"var(--bg)", display:"flex", alignItems:"flex-start", justifyContent:"center", padding:"1rem", paddingTop:"5vh" }}>
       <div className="fade-in card" style={{ maxWidth:360, width:"100%", textAlign:"center" }}>
         <div style={{ width:64, height:64, borderRadius:"50%", background:"var(--primary-light)", margin:"0 auto 1.5rem", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"2rem" }}>🌿</div>
         <h1 style={{ fontFamily:"var(--font-display)", fontSize:"1.8rem", fontWeight:700, marginBottom:"8px" }}>Area Staff</h1>
