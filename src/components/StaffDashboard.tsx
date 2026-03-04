@@ -22,10 +22,10 @@ function StatusBadge({ status }: { status: string }) {
 function BookingModal({ booking, type, onClose, onSave }: { booking:any; type:string; onClose:()=>void; onSave:(id:number,type:string,status:string,notes:string)=>void; }) {
   const [status, setStatus] = useState(booking.status);
   const [staffNotes, setStaffNotes] = useState(booking.staff_notes ?? "");
-  const startDate = new Date(Number(booking.start_time));
+  const startDate = new Date(booking.start_time);
 
   return (
-    <div style={{ position:"fixed", inset:0, zIndex:9999, display:"flex", alignItems:"flex-start", justifyContent:"center", padding:"1rem", paddingTop:"5vh" }}>
+    <div style={{ position:"fixed", inset:0, zIndex:200, display:"flex", alignItems:"center", justifyContent:"center", padding:"1rem" }}>
       <div onClick={onClose} style={{ position:"absolute", inset:0, background:"rgba(0,0,0,0.5)" }} />
       <div className="fade-in card" style={{ position:"relative", width:"100%", maxWidth:540, maxHeight:"90vh", overflowY:"auto" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:"1.25rem" }}>
@@ -40,7 +40,7 @@ function BookingModal({ booking, type, onClose, onSave }: { booking:any; type:st
             ["Email", booking.client_email],
             ["Telefono", booking.client_phone],
             ["Data", startDate.toLocaleDateString("it-IT",{weekday:"long",day:"numeric",month:"long",year:"numeric"})],
-            ["Orario", `${startDate.toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})} — ${new Date(Number(booking.end_time)).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})}`],
+            ["Orario", `${startDate.toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})} — ${new Date(booking.end_time).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})}`],
             ...(type==="event" ? [["Ospiti",`${booking.guest_count} persone`]] : [["Indirizzo",booking.address],["Superficie",booking.surface_area||"—"]]),
           ].map(([k,v]) => (
             <div key={k} style={{ background:"var(--muted)", borderRadius:"8px", padding:"10px 12px" }}>
@@ -146,7 +146,7 @@ export default function StaffDashboard() {
 
   // ── LOGIN ──
   if (!loggedIn) return (
-    <div style={{ minHeight:"100vh", background:"var(--bg)", display:"flex", alignItems:"flex-start", justifyContent:"center", padding:"1rem", paddingTop:"5vh" }}>
+    <div style={{ minHeight:"100vh", background:"var(--bg)", display:"flex", alignItems:"center", justifyContent:"center", padding:"1rem" }}>
       <div className="fade-in card" style={{ maxWidth:360, width:"100%", textAlign:"center" }}>
         <div style={{ width:64, height:64, borderRadius:"50%", background:"var(--primary-light)", margin:"0 auto 1.5rem", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"2rem" }}>🌿</div>
         <h1 style={{ fontFamily:"var(--font-display)", fontSize:"1.8rem", fontWeight:700, marginBottom:"8px" }}>Area Staff</h1>
@@ -317,8 +317,8 @@ function CalendarTab({ events, garden }: { events:EventBooking[]; garden:GardenB
 
   const getForDay = (d:number) => {
     const date=new Date(year,month,d);
-    const evts = filter!=="garden" ? events.filter(e=>new Date(Number(e.start_time)).toDateString()===date.toDateString()) : [];
-    const gdns = filter!=="events" ? garden.filter(g=>new Date(Number(g.start_time)).toDateString()===date.toDateString()) : [];
+    const evts = filter!=="garden" ? events.filter(e=>new Date(Number(e.start_time)).toDateString()===date.toDateString() && e.status!=="cancelled") : [];
+    const gdns = filter!=="events" ? garden.filter(g=>new Date(Number(g.start_time)).toDateString()===date.toDateString() && g.status!=="cancelled") : [];
     return {evts,gdns};
   };
 
@@ -390,9 +390,9 @@ function BookingsList({ bookings, type, onUpdate, labelMap }: { bookings:any[]; 
       ) : (
         <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
           {filtered.map(b=>(
-            <div key={b.id} onClick={()=>setSelected(b)} style={{background:"var(--card)",borderRadius:"0.75rem",border:"1px solid var(--border)",padding:"1rem",cursor:"pointer",transition:"border-color 0.15s"}} onMouseEnter={e=>(e.currentTarget.style.borderColor="var(--primary)")} onMouseLeave={e=>(e.currentTarget.style.borderColor="var(--border)")}>
+            <div key={b.id} style={{background:"var(--card)",borderRadius:"0.75rem",border:"1px solid var(--border)",padding:"1rem",transition:"border-color 0.15s"}} onMouseEnter={e=>(e.currentTarget.style.borderColor="var(--primary)")} onMouseLeave={e=>(e.currentTarget.style.borderColor="var(--border)")}>
               <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",gap:"12px"}}>
-                <div style={{display:"flex",alignItems:"flex-start",gap:"12px",minWidth:0}}>
+                <div onClick={()=>setSelected(b)} style={{display:"flex",alignItems:"flex-start",gap:"12px",minWidth:0,flex:1,cursor:"pointer"}}>
                   <div style={{width:36,height:36,borderRadius:"8px",background:"var(--primary-light)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,fontSize:"1rem"}}>{type==="event"?"🍽":"🌿"}</div>
                   <div style={{minWidth:0}}>
                     <div style={{display:"flex",alignItems:"center",gap:"8px",flexWrap:"wrap",marginBottom:"4px"}}>
@@ -401,15 +401,19 @@ function BookingsList({ bookings, type, onUpdate, labelMap }: { bookings:any[]; 
                       <span style={{padding:"2px 8px",borderRadius:"999px",fontSize:"0.7rem",fontWeight:600,background:"var(--accent)",color:"var(--accent-fg)"}}>{labelMap[b.event_type||b.space_type]}</span>
                     </div>
                     <div style={{display:"flex",flexWrap:"wrap",gap:"12px",fontSize:"0.75rem",color:"var(--muted-fg)"}}>
-                      <span>📅 {new Date(Number(b.start_time)).toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"})}</span>
-                      <span>🕐 {new Date(Number(b.start_time)).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})}</span>
+                      <span>📅 {new Date(b.start_time).toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"})}</span>
+                      <span>🕐 {new Date(b.start_time).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})}</span>
                       {b.guest_count && <span>👥 {b.guest_count} persone</span>}
                       {b.address && <span>📍 {b.address.slice(0,30)}…</span>}
                     </div>
                     <p style={{fontSize:"0.75rem",color:"var(--muted-fg)",marginTop:"2px"}}>{b.client_email}</p>
                   </div>
                 </div>
-                <span style={{color:"var(--muted-fg)",flexShrink:0}}>›</span>
+                <div style={{display:"flex",flexDirection:"column",gap:"5px",flexShrink:0}}>
+                  {b.status!=="confirmed"&&<button onClick={e=>{e.stopPropagation();onUpdate(b.id,type,"confirmed",b.staff_notes??"");}} style={{padding:"5px 10px",borderRadius:"6px",border:"none",background:"#dcfce7",color:"#166534",fontSize:"0.7rem",fontWeight:700,cursor:"pointer"}}>✅ Conferma</button>}
+                  {b.status!=="cancelled"&&<button onClick={e=>{e.stopPropagation();onUpdate(b.id,type,"cancelled",b.staff_notes??"");}} style={{padding:"5px 10px",borderRadius:"6px",border:"none",background:"#fef2f2",color:"#991b1b",fontSize:"0.7rem",fontWeight:700,cursor:"pointer"}}>❌ Annulla</button>}
+                  <button onClick={()=>setSelected(b)} style={{padding:"5px 10px",borderRadius:"6px",border:"1px solid var(--border)",background:"transparent",fontSize:"0.7rem",fontWeight:600,cursor:"pointer",color:"var(--muted-fg)"}}>✏️ Dettagli</button>
+                </div>
               </div>
             </div>
           ))}
@@ -510,12 +514,12 @@ function ExportTab({ events, garden, webhookLog, onTestWebhook }: { events:Event
     const rows: string[] = [];
     if (type!=="garden") {
       rows.push("Tipo,Nome,Email,Telefono,Tipo Evento,Persone,Data,Ora,Stato,Note");
-      events.forEach(e=>rows.push(`Evento,"${e.client_name}",${e.client_email},${e.client_phone},${e.event_type},${e.guest_count},${new Date(Number(e.start_time)).toLocaleDateString("it-IT")},${new Date(Number(e.start_time)).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})},${e.status},"${e.notes||""}"`));
+      events.forEach(e=>rows.push(`Evento,"${e.client_name}",${e.client_email},${e.client_phone},${e.event_type},${e.guest_count},${new Date(e.start_time).toLocaleDateString("it-IT")},${new Date(e.start_time).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})},${e.status},"${e.notes||""}"`));
     }
     if (type!=="events") {
       if (type==="all") rows.push("");
       rows.push("Tipo,Nome,Email,Telefono,Tipo Spazio,Superficie,Indirizzo,Data,Ora,Stato");
-      garden.forEach(g=>rows.push(`Sopralluogo,"${g.client_name}",${g.client_email},${g.client_phone},${g.space_type},${g.surface_area||""},"${g.address}",${new Date(Number(g.start_time)).toLocaleDateString("it-IT")},${new Date(Number(g.start_time)).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})},${g.status}`));
+      garden.forEach(g=>rows.push(`Sopralluogo,"${g.client_name}",${g.client_email},${g.client_phone},${g.space_type},${g.surface_area||""},"${g.address}",${new Date(g.start_time).toLocaleDateString("it-IT")},${new Date(g.start_time).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})},${g.status}`));
     }
     const blob=new Blob(["\uFEFF"+rows.join("\n")],{type:"text/csv;charset=utf-8;"});
     const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`frugale-${type}-${new Date().toISOString().slice(0,10)}.csv`;document.body.appendChild(a);a.click();document.body.removeChild(a);
