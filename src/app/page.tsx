@@ -27,7 +27,7 @@ export default function HomePage() {
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: "1.5rem", padding: "6px 16px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.08)", fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.85)" }}>
                 🌿 Roma · Via Adolfo Marco Boroli 23
               </div>
-              <h1 className="hero-h1" style={{color:"white",fontSize:"clamp(3.5rem,6vw,5.5rem)"}}>
+              <h1 style={{color:"white",fontSize:"clamp(2.6rem,6vw,5.5rem)",fontFamily:"Cormorant Garamond, Georgia, serif",fontWeight:600,lineHeight:1.05,letterSpacing:"-0.02em",marginBottom:"1.5rem"}}>
                 Il giardino<br />dove <em style={{ fontStyle: "italic", color: "rgba(255,255,255,0.55)" }}>il cibo</em><br />incontra <em style={{ fontStyle: "italic", color: "rgba(255,255,255,0.55)" }}>la natura</em>
               </h1>
               <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, marginBottom: "2.5rem", fontWeight: 300, maxWidth: 480 }}>
