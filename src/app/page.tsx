@@ -19,7 +19,7 @@ export default function HomePage() {
       </nav>
 
       {/* HERO */}
-      <section style={{ background: "var(--teal-darker)", position: "relative", overflow: "hidden" }}>
+      <section className="hero-section" style={{ background: "var(--teal-darker)", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 70% 30%,rgba(74,138,140,0.5) 0%,transparent 60%),radial-gradient(ellipse at 20% 70%,rgba(30,69,71,0.9) 0%,transparent 50%)" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1100, margin: "0 auto", padding: "4rem 1.5rem 5rem" }}>
           <div className="hero-grid">
