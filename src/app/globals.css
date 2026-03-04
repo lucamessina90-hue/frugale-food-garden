@@ -138,3 +138,16 @@ label { font-size: 0.82rem; font-weight: 600; color: var(--text); display: block
   .steps-grid { grid-template-columns: 1fr !important; }
   .loc-grid { grid-template-columns: 1fr !important; padding: 2rem 1.25rem !important; }
 }
+
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+  .hero-cards { display: none !important; }
+  .hero-h1 { font-size: 2.5rem !important; }
+  .services-grid { grid-template-columns: 1fr !important; }
+  .steps-grid { grid-template-columns: 1fr !important; }
+  .loc-grid { grid-template-columns: 1fr !important; }
+  .nav-links-mobile a { padding: 7px 10px !important; font-size: 0.72rem !important; }
+  .hero-btns a { font-size: 0.82rem !important; padding: 10px 14px !important; }
+  .section-pad { padding: 3rem 1.25rem !important; }
+  .footer-flex { flex-direction: column !important; }
+}
