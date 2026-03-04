@@ -157,3 +157,17 @@ h1.hero-h1 {
   font-size: clamp(3.5rem, 6vw, 5.5rem) !important;
   font-family: 'Cormorant Garamond', Georgia, serif !important;
 }
+
+@media (max-width: 768px) {
+  h1.hero-h1 {
+    color: white !important;
+    font-size: 2.6rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  h1.hero-h1 {
+    color: white !important;
+    font-size: 2.6rem !important;
+  }
+}
