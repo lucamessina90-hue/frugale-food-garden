@@ -401,8 +401,8 @@ function BookingsList({ bookings, type, onUpdate, labelMap }: { bookings:any[]; 
                       <span style={{padding:"2px 8px",borderRadius:"999px",fontSize:"0.7rem",fontWeight:600,background:"var(--accent)",color:"var(--accent-fg)"}}>{labelMap[b.event_type||b.space_type]}</span>
                     </div>
                     <div style={{display:"flex",flexWrap:"wrap",gap:"12px",fontSize:"0.75rem",color:"var(--muted-fg)"}}>
-                      <span>📅 {new Date(b.start_time).toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"})}</span>
-                      <span>🕐 {new Date(b.start_time).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})}</span>
+                      <span>📅 {new Date(Number(b.start_time)).toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"})}</span>
+                      <span>🕐 {new Date(Number(b.start_time)).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})}</span>
                       {b.guest_count && <span>👥 {b.guest_count} persone</span>}
                       {b.address && <span>📍 {b.address.slice(0,30)}…</span>}
                     </div>
@@ -514,12 +514,12 @@ function ExportTab({ events, garden, webhookLog, onTestWebhook }: { events:Event
     const rows: string[] = [];
     if (type!=="garden") {
       rows.push("Tipo,Nome,Email,Telefono,Tipo Evento,Persone,Data,Ora,Stato,Note");
-      events.forEach(e=>rows.push(`Evento,"${e.client_name}",${e.client_email},${e.client_phone},${e.event_type},${e.guest_count},${new Date(e.start_time).toLocaleDateString("it-IT")},${new Date(e.start_time).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})},${e.status},"${e.notes||""}"`));
+      events.forEach(e=>rows.push(`Evento,"${e.client_name}",${e.client_email},${e.client_phone},${e.event_type},${e.guest_count},${new Date(Number(e.start_time)).toLocaleDateString("it-IT")},${new Date(Number(e.start_time)).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})},${e.status},"${e.notes||""}"`));
     }
     if (type!=="events") {
       if (type==="all") rows.push("");
       rows.push("Tipo,Nome,Email,Telefono,Tipo Spazio,Superficie,Indirizzo,Data,Ora,Stato");
-      garden.forEach(g=>rows.push(`Sopralluogo,"${g.client_name}",${g.client_email},${g.client_phone},${g.space_type},${g.surface_area||""},"${g.address}",${new Date(g.start_time).toLocaleDateString("it-IT")},${new Date(g.start_time).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})},${g.status}`));
+      garden.forEach(g=>rows.push(`Sopralluogo,"${g.client_name}",${g.client_email},${g.client_phone},${g.space_type},${g.surface_area||""},"${g.address}",${new Date(Number(g.start_time)).toLocaleDateString("it-IT")},${new Date(Number(g.start_time)).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})},${g.status}`));
     }
     const blob=new Blob(["\uFEFF"+rows.join("\n")],{type:"text/csv;charset=utf-8;"});
     const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`frugale-${type}-${new Date().toISOString().slice(0,10)}.csv`;document.body.appendChild(a);a.click();document.body.removeChild(a);
