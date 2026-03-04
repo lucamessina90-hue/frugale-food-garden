@@ -40,7 +40,7 @@ function BookingModal({ booking, type, onClose, onSave }: { booking:any; type:st
             ["Email", booking.client_email],
             ["Telefono", booking.client_phone],
             ["Data", startDate.toLocaleDateString("it-IT",{weekday:"long",day:"numeric",month:"long",year:"numeric"})],
-            ["Orario", `${startDate.toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})} — ${new Date(booking.end_time).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})}`],
+            ["Orario", `${startDate.toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})} — ${new Date(Number(booking.end_time)).toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})}`],
             ...(type==="event" ? [["Ospiti",`${booking.guest_count} persone`]] : [["Indirizzo",booking.address],["Superficie",booking.surface_area||"—"]]),
           ].map(([k,v]) => (
             <div key={k} style={{ background:"var(--muted)", borderRadius:"8px", padding:"10px 12px" }}>
