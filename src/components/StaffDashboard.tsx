@@ -22,7 +22,7 @@ function StatusBadge({ status }: { status: string }) {
 function BookingModal({ booking, type, onClose, onSave }: { booking:any; type:string; onClose:()=>void; onSave:(id:number,type:string,status:string,notes:string)=>void; }) {
   const [status, setStatus] = useState(booking.status);
   const [staffNotes, setStaffNotes] = useState(booking.staff_notes ?? "");
-  const startDate = new Date(booking.start_time);
+  const startDate = new Date(Number(booking.start_time));
 
   return (
     <div style={{ position:"fixed", inset:0, zIndex:200, display:"flex", alignItems:"center", justifyContent:"center", padding:"1rem" }}>
