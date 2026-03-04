@@ -4,29 +4,7 @@ import Image from "next/image";
 export default function HomePage() {
   return (
     <div style={{ minHeight: "100vh", background: "var(--cream)" }}>
-      <style>{`
-        .nav-links-mobile { display: flex; align-items: center; gap: 8px; }
-        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; width: 100%; }
-        .hero-cards { display: flex; flex-direction: column; gap: 14px; }
-        .hero-h1 { font-family: var(--font-display); font-size: clamp(3rem,6vw,5.5rem); font-weight: 600; line-height: 1.05; color: white; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
-        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
-        .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-        @media (max-width: 768px) {
-          .hero-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
-          .hero-cards { display: none !important; }
-          .hero-h1 { font-size: 2.8rem !important; }
-          .services-grid { grid-template-columns: 1fr !important; }
-          .steps-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
-          .loc-grid { grid-template-columns: 1fr !important; padding: 2rem 1.25rem !important; }
-          .nav-links-mobile { gap: 6px !important; }
-          .nav-links-mobile a { padding: 7px 10px !important; font-size: 0.72rem !important; }
-          .hero-btns a { font-size: 0.82rem !important; padding: 11px 16px !important; }
-          .section-pad { padding: 3rem 1.25rem !important; }
-          .footer-flex { flex-direction: column !important; gap: 1rem !important; }
-        }
-      `}</style>
+      
 
       {/* NAV */}
       <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "var(--teal-darker)", height: 68, padding: "0 1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between", boxShadow: "0 2px 20px rgba(0,0,0,0.2)" }}>
