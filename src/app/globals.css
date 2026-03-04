@@ -118,3 +118,23 @@ label { font-size: 0.82rem; font-weight: 600; color: var(--text); display: block
   .staff-sidebar { display: none; }
   .staff-sidebar.mobile-open { display: flex; position: fixed; inset: 0; z-index: 50; width: 240px; }
 }
+
+/* ── MOBILE RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Nav */
+  nav { padding: 0 1rem !important; }
+  nav img { height: 32px !important; }
+
+  /* Hero */
+  .hero-content-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-cards-mobile { display: none !important; }
+  .hero-title { font-size: 3rem !important; }
+
+  /* Sections */
+  .section-inner { padding: 3rem 1.25rem !important; }
+  .cards-grid-2 { grid-template-columns: 1fr !important; }
+  .steps-grid { grid-template-columns: 1fr !important; }
+  .loc-grid { grid-template-columns: 1fr !important; padding: 2rem 1.25rem !important; }
+}
